@@ -1,0 +1,13 @@
+{
+  "extends": "plugin:vue/recommended",
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "html",
+    "vue"
+  ],
+  "rules": {
+    "vue/no-v-html": "off"
+  }
+}
