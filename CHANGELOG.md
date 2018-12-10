@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1 (Dec 10, 2018)
+
+- Add missing dependencies and upgrade some dependencies.
+
 ## 1.0.0 (Dec 9, 2018)
 
 - Supports scoped css.
