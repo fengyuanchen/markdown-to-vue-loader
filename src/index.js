@@ -219,7 +219,16 @@ export default function markdownToVueLoader(source, map) {
     }
   });
 
-  let output = `<template>
+  let output = '';
+
+  $('style').each((i, style) => {
+    const $style = $(style);
+
+    output += `<style>${$style.html()}</style>`;
+    $style.remove();
+  });
+
+  output += `<template>
   <div class="${normalizedResourceName}">${$('body').html()}</div>
 </template>`;
 
