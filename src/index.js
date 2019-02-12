@@ -17,6 +17,16 @@ const defaultOptions = {
   tableClass: '',
   tableWrapper: '',
 };
+const defaultMarkdownItOptions = {
+  html: true,
+  linkify: true,
+  typographer: true,
+};
+const defaultCheerioLoadOptions = {
+  decodeEntities: false,
+  lowerCaseAttributeNames: false,
+  lowerCaseTags: false,
+};
 
 // RegExps
 const REGEXP_APOSTROPHES = /&apos;/g;
@@ -64,15 +74,17 @@ function normalizeComponent(script, mixin) {
 
 export default function markdownToVueLoader(source, map) {
   const options = Object.assign({}, defaultOptions, loaderUtils.getOptions(this));
-  const markdown = new MarkdownIt(Object.assign({
-    html: true,
-    linkify: true,
-    typographer: true,
-  }, options.markdownItOptions));
-  const $ = cheerio.load(markdown.render(source), {
-    decodeEntities: true,
-    lowerCaseTags: false,
-  });
+  const markdown = new MarkdownIt(Object.assign(
+    {},
+    defaultMarkdownItOptions,
+    options.markdownItOptions,
+  ));
+  const cheerioLoadOptions = Object.assign(
+    {},
+    defaultCheerioLoadOptions,
+    options.cheerioLoadOptions,
+  );
+  const $ = cheerio.load(markdown.render(source), cheerioLoadOptions);
   const resourceName = path.basename(this.resourcePath, '.md');
   const normalizedResourceName = resourceName.toLowerCase().replace(REGEXP_NOT_WORDS, '-').replace(REGEXP_HYPHENS_START, '').replace(REGEXP_HYPHENS_END, '');
   const components = [];
@@ -114,7 +126,7 @@ export default function markdownToVueLoader(source, map) {
 
         switch (language) {
           case 'vue': {
-            const $html = cheerio.load($code.text());
+            const $html = cheerio.load($code.text(), cheerioLoadOptions);
             const $style = $html('style');
 
             component = $html('script').html() || 'module.exports = {};';
@@ -125,7 +137,7 @@ export default function markdownToVueLoader(source, map) {
           }
 
           case 'html': {
-            const $html = cheerio.load($code.text());
+            const $html = cheerio.load($code.text(), cheerioLoadOptions);
             const $body = $html('body');
             const $script = $html('script');
             const $style = $html('style');
@@ -205,6 +217,12 @@ export default function markdownToVueLoader(source, map) {
     if (options.preWrapper) {
       $pre.wrap(options.preWrapper);
     }
+
+    $pre.children('code').each((i, code) => {
+      const $code = $(code);
+
+      $code.text(markdown.utils.escapeHtml($code.text()));
+    });
   });
 
   $('table').each((i, table) => {
@@ -219,27 +237,30 @@ export default function markdownToVueLoader(source, map) {
     }
   });
 
-  let output = '';
+  const $html = cheerio.load('<template></template>');
+  const $body = $html('body');
+
+  $body.append($html('head template'));
 
   $('style').each((i, style) => {
     const $style = $(style);
 
-    output += `<style>${$style.html()}</style>`;
+    $body.append($style);
     $style.remove();
   });
 
-  output += `<template>
-  <div class="${normalizedResourceName}">${$('body').html()}</div>
-</template>`;
+  $html('template').append(`<div class="${normalizedResourceName}">${$('body').html()}</div>`);
 
   if (options.exportSource || components.length > 0) {
-    output += `<script>
+    $body.append(`<script>
   module.exports = {
     ${options.exportSource ? `source: ${JSON.stringify(markdown.utils.escapeHtml(source))},` : ''}
     ${components.length > 0 ? `components: {${components.join()}}` : ''}
   };
-</script>`;
+</script>`);
   }
+
+  let output = $html('body').html();
 
   if (!options.escapeApostrophes) {
     output = output.replace(REGEXP_APOSTROPHES, '\'');
