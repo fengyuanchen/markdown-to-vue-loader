@@ -8,5 +8,20 @@
     "global-require": "off",
     "import/no-extraneous-dependencies": "off",
     "no-param-reassign": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["test/**"],
+      "env": {
+        "mocha": true
+      },
+      "globals": {
+        "expect": true
+      },
+      "rules": {
+        "no-unused-expressions": "off",
+        "no-console": "off"
+      }
+    }
+  ]
 }

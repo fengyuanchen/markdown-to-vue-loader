@@ -4,25 +4,9 @@
   "description": "Markdown to Vue component loader for Webpack.",
   "main": "dist/markdown-to-vue-loader.js",
   "module": "dist/markdown-to-vue-loader.esm.js",
-  "repository": "fengyuanchen/markdown-to-vue-loader",
-  "homepage": "https://fengyuanchen.github.io/markdown-to-vue-loader",
-  "license": "MIT",
-  "author": {
-    "name": "Chen Fengyuan",
-    "url": "https://chenfengyuan.com"
-  },
   "files": [
     "src",
     "dist"
-  ],
-  "keywords": [
-    "markdown",
-    "vue",
-    "vue-component",
-    "vue.js",
-    "webpack-loader",
-    "front-end",
-    "node"
   ],
   "scripts": {
     "build": "rollup -c",
@@ -41,6 +25,28 @@
     "test": "nyc mocha",
     "test:cover": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fengyuanchen/markdown-to-vue-loader.git"
+  },
+  "keywords": [
+    "markdown",
+    "vue",
+    "vue-component",
+    "vue.js",
+    "webpack-loader",
+    "front-end",
+    "node"
+  ],
+  "author": {
+    "name": "Chen Fengyuan",
+    "url": "https://chenfengyuan.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fengyuanchen/markdown-to-vue-loader/issues"
+  },
+  "homepage": "https://fengyuanchen.github.io/markdown-to-vue-loader",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "loader-utils": "^1.2.3",
@@ -91,5 +97,39 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14",
     "webpack-merge": "^4.2.1"
+  },
+  "engines": {
+    "node": "^8.11.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not ie <= 8"
+  ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.js": [
+        "eslint --fix",
+        "git add"
+      ],
+      "*.{css,scss,vue,html}": [
+        "stylelint --fix",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "**/dist/*"
+    ]
   }
 }
