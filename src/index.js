@@ -8,7 +8,6 @@ const path = require('path');
 const defaultOptions = {
   componentNamespace: 'component',
   componentWrapper: '',
-  escapeApostrophes: false,
   exportSource: false,
   languages: ['vue', 'html'],
   markdownItOptions: {},
@@ -29,7 +28,6 @@ const defaultCheerioLoadOptions = {
 };
 
 // RegExps
-const REGEXP_APOSTROPHES = /&apos;/g;
 const REGEXP_COMMENT_OPTIONS = /^(no-)?vue-component$/;
 const REGEXP_HYPHENS_END = /-*$/;
 const REGEXP_HYPHENS_START = /^-*/;
@@ -260,11 +258,5 @@ export default function markdownToVueLoader(source, map) {
 </script>`);
   }
 
-  let output = $html('body').html();
-
-  if (!options.escapeApostrophes) {
-    output = output.replace(REGEXP_APOSTROPHES, '\'');
-  }
-
-  this.callback(null, output, map);
+  this.callback(null, $html('body').html(), map);
 }
