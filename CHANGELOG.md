@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.0-alpha (Feb 12, 2019)
+
+- add 2 new options: `cheerioLoadOptions` and `configureMarkdownIt`.
+- Support root `<style>` elements.
+- Set the `decodeEntities` option of `cheerio.load()` from `true` to `false`.
+- Drop the `escapeApostrophes` option.
+
 ## 1.0.1 (Dec 10, 2018)
 
 - Add missing dependencies and upgrade some dependencies.

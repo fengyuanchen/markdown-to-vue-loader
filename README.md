@@ -47,6 +47,38 @@ module: {
 
 ## Options
 
+### cheerioLoadOptions
+
+- Type: `Object`
+- Default:
+
+    ```js
+    {
+      decodeEntities: false,
+      lowerCaseAttributeNames: false,
+      lowerCaseTags: false,
+    }
+    ```
+
+The options for the `load` method of the [**cheerio**](https://github.com/cheeriojs/cheerio).
+
+### configureMarkdownIt
+
+- Type: `Function`
+- Default: `null`
+- Example:
+
+    ```js
+    {
+      configureMarkdownIt(md) {
+        md.set(...)
+          .use(...);
+      }
+    }
+    ```
+
+Checkout the documentation of [MarkdownIt](https://markdown-it.github.io/markdown-it/) for more information.
+
 ### componentNamespace
 
 - Type: `String`
@@ -195,6 +227,7 @@ will generate (`example.vue`):
 
 - Type: `Object`
 - Default:
+
     ```js
     {
       html: true,
@@ -202,7 +235,9 @@ will generate (`example.vue`):
       typographer: true,
     }
     ```
+
 - Example:
+
     ```js
     {
       typographer: false,
@@ -212,7 +247,7 @@ will generate (`example.vue`):
     }
     ```
 
-The options for built-in markdown parser [**markdown-it**](https://github.com/markdown-it/markdown-it).
+The options for the built-in markdown parser [**markdown-it**](https://github.com/markdown-it/markdown-it).
 
 ### preClass
 
