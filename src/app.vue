@@ -154,7 +154,7 @@ import ExampleVue from './examples/vue.md';
 import ExampleHtml from './examples/html.md';
 import ExampleJavascript from './examples/javascript.md';
 import ExampleOthers from './examples/others.md';
-import pkg from '../../package.json';
+import pkg from '../package.json';
 
 export default {
   components: {

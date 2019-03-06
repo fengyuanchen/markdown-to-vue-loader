@@ -3,9 +3,9 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const path = require('path');
 
 module.exports = (env = {}) => ({
-  entry: './docs/src/index.js',
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, './docs/dist'),
+    path: path.resolve(__dirname, './docs'),
   },
   module: {
     rules: [
@@ -36,7 +36,7 @@ module.exports = (env = {}) => ({
         use: [
           'vue-loader',
           {
-            loader: path.resolve(__dirname, './dist/markdown-to-vue-loader.js'),
+            loader: path.resolve(__dirname, './index.js'),
             options: {
               exportSource: true,
             },
@@ -53,8 +53,8 @@ module.exports = (env = {}) => ({
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      filename: env.production ? '../index.html' : 'index.html',
-      template: './docs/src/index.html',
+      filename: env.production ? '../docs/index.html' : 'index.html',
+      template: './src/index.html',
     }),
   ],
 });
