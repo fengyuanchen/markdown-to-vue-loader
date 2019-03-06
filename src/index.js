@@ -1,30 +1,29 @@
-import cheerio from 'cheerio';
-import loaderUtils from 'loader-utils';
-import MarkdownIt from 'markdown-it';
-import postcss from 'postcss';
-
+const MarkdownIt = require('markdown-it');
+const cheerio = require('cheerio');
+const loaderUtils = require('loader-utils');
 const path = require('path');
+const postcss = require('postcss');
 
 const defaultOptions = {
+  cheerioLoadOptions: {
+    decodeEntities: false,
+    lowerCaseAttributeNames: false,
+    lowerCaseTags: false,
+  },
+  configureMarkdownIt: null,
   componentNamespace: 'component',
   componentWrapper: '',
   exportSource: false,
   languages: ['vue', 'html'],
-  markdownItOptions: {},
+  markdownItOptions: {
+    html: true,
+    linkify: true,
+    typographer: true,
+  },
   preClass: '',
   preWrapper: '',
   tableClass: '',
   tableWrapper: '',
-};
-const defaultMarkdownItOptions = {
-  html: true,
-  linkify: true,
-  typographer: true,
-};
-const defaultCheerioLoadOptions = {
-  decodeEntities: false,
-  lowerCaseAttributeNames: false,
-  lowerCaseTags: false,
 };
 
 // RegExps
@@ -70,16 +69,22 @@ function normalizeComponent(script, mixin) {
   }())`;
 }
 
-export default function markdownToVueLoader(source, map) {
+module.exports = function markdownToVueLoader(source, map) {
   const options = Object.assign({}, defaultOptions, loaderUtils.getOptions(this));
-  const markdown = new MarkdownIt(Object.assign(
+  const markdownItOptions = Object.assign(
     {},
-    defaultMarkdownItOptions,
+    defaultOptions.markdownItOptions,
     options.markdownItOptions,
-  ));
+  );
+  const markdown = new MarkdownIt(markdownItOptions);
+
+  if (typeof options.configureMarkdownIt === 'function') {
+    options.configureMarkdownIt.call(markdown, markdown);
+  }
+
   const cheerioLoadOptions = Object.assign(
     {},
-    defaultCheerioLoadOptions,
+    defaultOptions.cheerioLoadOptions,
     options.cheerioLoadOptions,
   );
   const $ = cheerio.load(markdown.render(source), cheerioLoadOptions);
@@ -259,4 +264,4 @@ export default function markdownToVueLoader(source, map) {
   }
 
   this.callback(null, $html('body').html(), map);
-}
+};
