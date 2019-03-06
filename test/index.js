@@ -25,7 +25,7 @@ function bundle(options, callback, loaderOptions = {}) {
           use: [
             'vue-loader',
             {
-              loader: path.resolve(__dirname, '../dist/markdown-to-vue-loader.js'),
+              loader: path.resolve(__dirname, '../index.js'),
               options: loaderOptions,
             },
           ],
