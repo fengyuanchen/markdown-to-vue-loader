@@ -1,7 +1,8 @@
 language: node_js
-node_js:
-  - "node"
+node_js: node
+cache: npm
 script:
   - npm run build
   - npm test
-after_success: npm run test:cover
+after_success:
+  - npm run test:cover
