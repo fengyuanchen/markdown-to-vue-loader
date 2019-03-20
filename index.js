@@ -132,7 +132,7 @@ module.exports = function markdownToVueLoader(source, map) {
             const $html = cheerio.load($code.text(), cheerioLoadOptions);
             const $style = $html('style');
 
-            component = $html('script').html() || 'module.exports = {};';
+            component = $html('script').html() || 'export default {};';
             scoped = $style.attr('scoped');
             style = $style.html();
             template = $html('template').html();
@@ -145,7 +145,7 @@ module.exports = function markdownToVueLoader(source, map) {
             const $script = $html('script');
             const $style = $html('style');
 
-            component = $script.html() || 'module.exports = {};';
+            component = $script.html() || 'export default {};';
             scoped = $style.attr('scoped');
             style = $style.html();
             $script.remove();
@@ -256,7 +256,7 @@ module.exports = function markdownToVueLoader(source, map) {
 
   if (options.exportSource || components.length > 0) {
     $body.append(`<script>
-  module.exports = {
+  export default {
     ${options.exportSource ? `source: ${JSON.stringify(markdown.utils.escapeHtml(source))},` : ''}
     ${components.length > 0 ? `components: {${components.join()}}` : ''}
   };
