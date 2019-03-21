@@ -1,6 +1,10 @@
 # Changelog
 
-## 2.0.0-alpha (Feb 12, 2019)
+## 2.0.0-alpha.1 (Mar 21, 2019)
+
+- Export all components as ES6 Module.
+
+## 2.0.0-alpha (Mar 6, 2019)
 
 - add 2 new options: `cheerioLoadOptions` and `configureMarkdownIt`.
 - Support root `<style>` elements.
