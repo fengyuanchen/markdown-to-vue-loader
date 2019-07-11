@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0-alpha.2 (Jul 11, 2019)
+
+- Use the `componentNamespace` option as the class prefix for the root element.
+- Upgrade [markdown-it](https://github.com/markdown-it/markdown-it) to v9.
+
 ## 2.0.0-alpha.1 (Mar 21, 2019)
 
 - Export all components as ES6 Module.
