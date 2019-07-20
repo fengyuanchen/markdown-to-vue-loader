@@ -249,7 +249,6 @@ module.exports = function markdownToVueLoader(source, map) {
     const $style = $(style);
 
     $body.append($style);
-    $style.remove();
   });
 
   $html('template').append(`<div class="${options.componentNamespace}-${normalizedResourceName}">${$('body').html()}</div>`);
