@@ -27,10 +27,10 @@ const defaultOptions = {
 };
 
 // RegExps
-const REGEXP_COMMENT_OPTIONS = /^(no-)?vue-component$/;
+const REGEXP_COMMENT_OPTIONS = /^(?:no-)?vue-component$/;
 const REGEXP_HYPHENS_END = /-*$/;
 const REGEXP_HYPHENS_START = /^-*/;
-const REGEXP_LANGUAGE_PREFIXES = /lang(uage)-?/;
+const REGEXP_LANGUAGE_PREFIXES = /lang(uage)?-/;
 const REGEXP_MODULE_EXPORTS = /(?:export\s+default|(?:module\.)?exports\s*=)/g;
 const REGEXP_MODULE_IMPORTS = /(?:import)(?:\s+((?:[\s\S](?!import))+?)\s+(?:from))?\s+["']([^"']+)["']/g;
 const REGEXP_NOT_WORDS = /\W/g;
