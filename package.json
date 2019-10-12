@@ -3,6 +3,9 @@
   "version": "2.0.0-beta",
   "description": "Markdown to Vue component loader for Webpack.",
   "main": "index.js",
+  "files": [
+    "index.js"
+  ],
   "scripts": {
     "build:docs": "webpack --mode production --env.production",
     "clear:docs": "del-cli docs",
