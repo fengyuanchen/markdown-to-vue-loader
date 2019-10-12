@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0-beta (Oct 12, 2019)
+
+- Avoid removing any global `<style>` elements.
+- Improve RegExps for better performance.
+
 ## 2.0.0-alpha.2 (Jul 11, 2019)
 
 - Use the `componentNamespace` option as the class prefix for the root element.
