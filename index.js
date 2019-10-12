@@ -70,23 +70,21 @@ function normalizeComponent(script, mixin) {
 }
 
 module.exports = function markdownToVueLoader(source, map) {
-  const options = Object.assign({}, defaultOptions, loaderUtils.getOptions(this));
-  const markdownItOptions = Object.assign(
-    {},
-    defaultOptions.markdownItOptions,
-    options.markdownItOptions,
-  );
+  const options = { ...defaultOptions, ...loaderUtils.getOptions(this) };
+  const markdownItOptions = {
+    ...defaultOptions.markdownItOptions,
+    ...options.markdownItOptions,
+  };
   const markdown = new MarkdownIt(markdownItOptions);
 
   if (typeof options.configureMarkdownIt === 'function') {
     options.configureMarkdownIt.call(markdown, markdown);
   }
 
-  const cheerioLoadOptions = Object.assign(
-    {},
-    defaultOptions.cheerioLoadOptions,
-    options.cheerioLoadOptions,
-  );
+  const cheerioLoadOptions = {
+    ...defaultOptions.cheerioLoadOptions,
+    ...options.cheerioLoadOptions,
+  };
   const $ = cheerio.load(markdown.render(source), cheerioLoadOptions);
   const resourceName = path.basename(this.resourcePath, '.md');
   const normalizedResourceName = resourceName.toLowerCase().replace(REGEXP_NOT_WORDS, '-').replace(REGEXP_HYPHENS_START, '').replace(REGEXP_HYPHENS_END, '');
@@ -180,7 +178,7 @@ module.exports = function markdownToVueLoader(source, map) {
                   return;
                 }
 
-                rule.selectors = rule.selectors.map(selector => `.${componentName} ${selector}`);
+                rule.selectors = rule.selectors.map((selector) => `.${componentName} ${selector}`);
               });
 
               style = root.toResult().css;
