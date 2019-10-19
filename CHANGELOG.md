@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0 (Oct 19, 2019)
+
+- Release as a stable version.
+
 ## 2.0.0-beta (Oct 12, 2019)
 
 - Avoid removing any global `<style>` elements.
