@@ -13,10 +13,10 @@ window.onload = function () {
 
 <style>
 .html-code-block {
-  border-radius: .25rem;
   border: 1px solid #eee;
+  border-radius: 0.25rem;
   margin-bottom: 1rem;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 </style>
 ```
