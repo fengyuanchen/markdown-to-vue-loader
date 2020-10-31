@@ -1,6 +1,5 @@
 const MarkdownIt = require('markdown-it');
 const cheerio = require('cheerio');
-const loaderUtils = require('loader-utils');
 const path = require('path');
 const postcss = require('postcss');
 
@@ -70,7 +69,7 @@ function normalizeComponent(script, mixin) {
 }
 
 module.exports = function markdownToVueLoader(source, map) {
-  const options = { ...defaultOptions, ...loaderUtils.getOptions(this) };
+  const options = { ...defaultOptions, ...this.getOptions() };
   const markdownItOptions = {
     ...defaultOptions.markdownItOptions,
     ...options.markdownItOptions,

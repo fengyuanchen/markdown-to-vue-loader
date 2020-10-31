@@ -44,7 +44,6 @@
   "homepage": "https://fengyuanchen.github.io/markdown-to-vue-loader",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "loader-utils": "^1.2.3",
     "markdown-it": "^10.0.0",
     "postcss": "^7.0.18"
   },
