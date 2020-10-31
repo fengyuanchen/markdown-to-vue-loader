@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/fengyuanchen/markdown-to-vue-loader.svg)](https://travis-ci.org/fengyuanchen/markdown-to-vue-loader) [![Coverage Status](https://img.shields.io/codecov/c/github/fengyuanchen/markdown-to-vue-loader.svg)](https://codecov.io/gh/fengyuanchen/markdown-to-vue-loader) [![Downloads](https://img.shields.io/npm/dm/markdown-to-vue-loader.svg)](https://www.npmjs.com/package/markdown-to-vue-loader) [![Version](https://img.shields.io/npm/v/markdown-to-vue-loader.svg)](https://www.npmjs.com/package/markdown-to-vue-loader) [![Dependencies](https://img.shields.io/david/fengyuanchen/markdown-to-vue-loader.svg)](https://www.npmjs.com/package/markdown-to-vue-loader)
 
-> Markdown to Vue component loader for [Webpack](https://webpack.js.org).
+> Markdown to Vue component loader for [Webpack](https://webpack.js.org/).
 
 - The built-in markdown parser is [**markdown-it**](https://github.com/markdown-it/markdown-it).
 - [Examples](https://fengyuanchen.github.io/markdown-to-vue-loader).
@@ -372,8 +372,8 @@ will render as this:
 
 ## Versioning
 
-Maintained under the [Semantic Versioning guidelines](https://semver.org).
+Maintained under the [Semantic Versioning guidelines](https://semver.org/).
 
 ## License
 
-[MIT](https://opensource.org/licenses/MIT) © [Chen Fengyuan](https://chenfengyuan.com)
+[MIT](https://opensource.org/licenses/MIT) © [Chen Fengyuan](https://chenfengyuan.com/)

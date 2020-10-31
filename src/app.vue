@@ -41,7 +41,7 @@
             </a>
             <a
               class="nav-link"
-              href="https://fengyuanchen.github.io"
+              href="https://fengyuanchen.github.io/"
               title="Explore more projects"
             >
               Explore
@@ -139,7 +139,7 @@
           </a>
           <a
             class="nav-link"
-            href="https://chenfengyuan.com"
+            href="https://chenfengyuan.com/"
           >
             About
           </a>
