@@ -1,6 +1,6 @@
 {
   "name": "markdown-to-vue-loader",
-  "version": "4.0.0-beta",
+  "version": "3.1.0",
   "description": "Markdown to Vue component loader for Webpack.",
   "main": "index.js",
   "files": [
@@ -47,9 +47,9 @@
   },
   "homepage": "https://fengyuanchen.github.io/markdown-to-vue-loader",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
-    "markdown-it": "^12.0.3",
-    "postcss": "^8.2.1"
+    "cheerio": "1.0.0-rc.3",
+    "markdown-it": "^12.0.4",
+    "postcss": "^8.2.2"
   },
   "peerDependencies": {
     "vue-loader": ">=15.0.0",
@@ -60,42 +60,35 @@
     "@babel/preset-env": "^7.12.11",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
-    "@vue/compiler-sfc": "^3.0.4",
+    "@vue/compiler-sfc": "^3.0.5",
     "babel-loader": "^8.2.2",
     "chai": "^4.2.0",
     "codecov": "^3.8.1",
     "conventional-changelog-cli": "^2.1.1",
-    "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
     "del-cli": "^3.0.1",
-    "eslint": "^7.15.0",
+    "eslint": "^7.16.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-html": "^6.1.1",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-vue": "^7.2.0",
+    "eslint-plugin-vue": "^7.4.0",
     "html-webpack-plugin": "^4.5.0",
     "husky": "^4.3.6",
     "lint-staged": "^10.5.3",
     "memory-fs": "^0.5.0",
     "mocha": "^8.2.1",
     "nyc": "^15.1.0",
-    "postcss-cli": "^8.3.1",
-    "postcss-import": "^14.0.0",
     "postcss-loader": "^4.1.0",
-    "postcss-preset-env": "^6.7.0",
     "style-loader": "^2.0.0",
     "stylelint": "^13.8.0",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.1.0",
     "vue": "^3.0.4",
-    "vue-loader": "^16.1.1",
-    "webpack": "^5.10.3",
-    "webpack-cli": "^4.2.0",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^5.7.0"
-  },
-  "publishConfig": {
-    "tag": "next"
+    "vue-loader": "^16.1.2",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.1",
+    "webpack-merge": "^5.7.3"
   },
   "browserslist": [
     "last 2 versions",

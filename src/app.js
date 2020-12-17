@@ -1,6 +1,10 @@
 import { createApp, h } from 'vue';
 import App from './app.vue';
 
-export default createApp({
+const app = createApp({
   render: () => h(App),
-}).mount('#app');
+});
+
+app.mount('#app');
+
+export default app;

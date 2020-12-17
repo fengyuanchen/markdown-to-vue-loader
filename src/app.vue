@@ -11,16 +11,16 @@
         <button
           class="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbar-collapse"
-          aria-controls="navbar-collapse"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon" />
         </button>
         <div
-          id="navbar-collapse"
+          id="navbarCollapse"
           class="collapse navbar-collapse justify-content-end"
           role="navigation"
         >
@@ -58,7 +58,7 @@
       </nav>
     </header>
     <main>
-      <div class="jumbotron bg-primary text-white rounded-0">
+      <div class="bg-primary text-white py-5">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md">
@@ -186,10 +186,10 @@ export default {
 .example {
   border-bottom: 1px solid #ddd;
   border-top: 1px solid #ddd;
+}
 
-  & + .example {
-    margin-top: -1px;
-  }
+.example + .example {
+  margin-top: -1px;
 }
 
 .example__code {

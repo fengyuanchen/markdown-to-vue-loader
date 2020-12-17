@@ -11,6 +11,20 @@
   },
   "overrides": [
     {
+      "files": ["src/**"],
+      "extends": "plugin:vue/recommended",
+      "env": {
+        "browser": true
+      },
+      "plugins": [
+        "html",
+        "vue"
+      ],
+      "rules": {
+        "vue/no-v-html": "off"
+      }
+    },
+    {
       "files": ["test/**"],
       "env": {
         "mocha": true
