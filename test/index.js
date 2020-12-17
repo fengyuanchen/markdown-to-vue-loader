@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const webpackMerge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MemoryFS = require('memory-fs');
 const { expect } = require('chai');
@@ -8,7 +8,7 @@ const { expect } = require('chai');
 const mfs = new MemoryFS();
 
 function bundle(options, callback, loaderOptions = {}) {
-  const config = webpackMerge({
+  const config = merge({
     mode: 'none',
     output: {
       path: path.resolve(__dirname, './expected'),

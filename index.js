@@ -74,6 +74,10 @@ function normalizeComponent(script, mixin) {
       component = {};
     }
 
+    if (${isVue3}) {
+      return Object.assign(component, ${mixin});
+    }
+
     component.mixins = (component.mixins || []).concat([${mixin}]);
 
     return component;
@@ -134,10 +138,10 @@ module.exports = function markdownToVueLoader(source, map) {
         }
 
         const mixin = [];
+        let template = '';
         let component;
         let scoped;
         let style;
-        let template;
 
         switch (language) {
           case 'vue': {

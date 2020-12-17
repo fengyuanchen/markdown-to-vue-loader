@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.0 (Jan 1, 2021)
+
+- Support Vue 3.
+- Upgrade to [postcss](https://github.com/postcss/postcss) 8.
+- Upgrade to [markdown-it](https://github.com/markdown-it/markdown-it) 12.
+
 ## 2.0.0 (Oct 19, 2019)
 
 - Release as a stable version.

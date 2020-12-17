@@ -9,6 +9,7 @@
 
 ## Features
 
+- Supports Vue 2 and Vue 3.
 - Supports to load a markdown file as a Vue component.
 - Supports to load code blocks (Vue and HTML by default) as Vue components.
 - Supports 10 [options](#options).
@@ -30,7 +31,6 @@ module: {
   rules: [
     {
       test: /\.md$/,
-      exclude: /(node_modules|bower_components)/,
       use: [
         'vue-loader',
         {
