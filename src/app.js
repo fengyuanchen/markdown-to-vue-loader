@@ -1,7 +1,6 @@
-import Vue from 'vue';
+import { createApp, h } from 'vue';
 import App from './app.vue';
 
-export default new Vue({
-  el: '#app',
-  render: (createElement) => createElement(App),
-});
+export default createApp({
+  render: () => h(App),
+}).mount('#app');

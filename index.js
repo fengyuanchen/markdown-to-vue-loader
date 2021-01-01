@@ -2,7 +2,9 @@ const MarkdownIt = require('markdown-it');
 const cheerio = require('cheerio');
 const path = require('path');
 const postcss = require('postcss');
+const vue = require('vue');
 
+const isVue3 = vue.version && vue.version[0] > 2;
 const defaultOptions = {
   cheerioLoadOptions: {
     decodeEntities: false,
@@ -62,9 +64,7 @@ function normalizeComponent(script, mixin) {
       component = {};
     }
 
-    component.mixins = (component.mixins || []).concat([${mixin}]);
-
-    return component;
+    return Object.assign(component, ${mixin});
   }())`;
 }
 
@@ -110,7 +110,7 @@ module.exports = function markdownToVueLoader(source, map) {
     }
 
     if (commentOption !== 'no-vue-component') {
-      $pre.children('code').each((i, code) => {
+      $pre.children('code').each((idx, code) => {
         const $code = $(code);
         const language = $code.attr('class').replace(REGEXP_LANGUAGE_PREFIXES, '');
 
@@ -119,28 +119,30 @@ module.exports = function markdownToVueLoader(source, map) {
         }
 
         const mixin = [];
+        let template = '';
         let component;
         let scoped;
         let style;
-        let template;
 
         switch (language) {
           case 'vue': {
-            const $html = cheerio.load($code.text(), cheerioLoadOptions);
-            const $style = $html('style');
+            const $$ = cheerio.load($code.text(), cheerioLoadOptions);
+            const $style = $$('style');
 
-            component = $html('script').html() || 'export default {};';
+            component = $$('script').html() || 'export default {};';
             scoped = $style.attr('scoped');
             style = $style.html();
-            template = $html('template').html();
+            $$('template').each((i, element) => {
+              template += $(element).html();
+            });
             break;
           }
 
           case 'html': {
-            const $html = cheerio.load($code.text(), cheerioLoadOptions);
-            const $body = $html('body');
-            const $script = $html('script');
-            const $style = $html('style');
+            const $$ = cheerio.load($code.text(), cheerioLoadOptions);
+            const $body = $$('body');
+            const $script = $$('script');
+            const $style = $$('style');
 
             component = $script.html() || 'export default {};';
             scoped = $style.attr('scoped');
@@ -149,7 +151,12 @@ module.exports = function markdownToVueLoader(source, map) {
             $style.remove();
 
             // Move <template> from <head> to <body>
-            $body.append($html('head template'));
+            $body.append($$('head template'));
+            $body.find('template').each((i, element) => {
+              const $element = $(element);
+
+              $element.replaceWith($element.html());
+            });
             template = $body.html();
             break;
           }
@@ -189,7 +196,7 @@ module.exports = function markdownToVueLoader(source, map) {
               document.head.appendChild(style);
               this.$styleInjectedByMarkdownToVueLoader = style;
             }`);
-            mixin.push(`beforeDestroy: function () {
+            mixin.push(`before${isVue3 ? 'Unmount' : 'Destroyed'}: function () {
               var $style = this.$styleInjectedByMarkdownToVueLoader;
               $style.parentNode.removeChild($style);
             }`);
@@ -237,18 +244,18 @@ module.exports = function markdownToVueLoader(source, map) {
     }
   });
 
-  const $html = cheerio.load('<template></template>');
-  const $body = $html('body');
+  const $$ = cheerio.load('<template></template>');
+  const $body = $$('body');
 
-  $body.append($html('head template'));
+  $body.append($$('head template'));
 
-  $('style').each((i, style) => {
+  $('style').each((index, style) => {
     const $style = $(style);
 
     $body.append($style);
   });
 
-  $html('template').append(`<div class="${options.componentNamespace}-${normalizedResourceName}">${$('body').html()}</div>`);
+  $$('template').append(`<div class="${options.componentNamespace}-${normalizedResourceName}">${$('body').html()}</div>`);
 
   if (options.exportSource || components.length > 0) {
     $body.append(`<script>
@@ -259,5 +266,5 @@ module.exports = function markdownToVueLoader(source, map) {
 </script>`);
   }
 
-  this.callback(null, $html('body').html(), map);
+  this.callback(null, $$('body').html(), map);
 };
