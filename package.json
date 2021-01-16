@@ -19,7 +19,7 @@
     "release:docs": "npm run clear:docs && npm run build:docs",
     "start": "npm run serve",
     "test": "nyc mocha --timeout 10000",
-    "test:cover": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+    "test:coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "repository": {
     "type": "git",

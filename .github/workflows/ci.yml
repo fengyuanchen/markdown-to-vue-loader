@@ -20,4 +20,4 @@ jobs:
     - run: npm install
     - run: npm run lint
     - run: npm test
-    - run: npm run test:cover
+    - run: npm run test:coverage
