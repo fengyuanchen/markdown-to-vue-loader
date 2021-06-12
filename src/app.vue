@@ -197,6 +197,10 @@ export default {
   margin-bottom: 0;
 }
 
+.example__code > code {
+  background-color: inherit;
+}
+
 @media (min-width: 992px) {
   .example__code {
     padding: 3rem 4rem;
