@@ -10,13 +10,14 @@
     "build:docs": "webpack --mode production",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "clear:docs": "del-cli docs",
-    "serve": "npm run clear:docs && npm run serve:docs",
+    "serve": "npm run clean:docs && npm run serve:docs",
     "serve:docs": "webpack serve --mode development",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:css": "stylelint {src,test}/**/*.{css,scss,vue,html,md} --fix",
     "lint:js": "eslint src test *.js --ext .js,.vue --fix",
+    "prepare": "husky install",
     "release": "npm run lint && npm test && npm run release:docs && npm run changelog",
-    "release:docs": "npm run clear:docs && npm run build:docs",
+    "release:docs": "npm run clean:docs && npm run build:docs",
     "start": "npm run serve",
     "test": "nyc mocha --timeout 10000",
     "test:coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
@@ -73,7 +74,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-vue": "^7.4.0",
     "html-webpack-plugin": "^4.5.0",
-    "husky": "^4.3.6",
+    "husky": "^6.0.0",
     "lint-staged": "^10.5.3",
     "memory-fs": "^0.5.0",
     "mocha": "^8.2.1",
@@ -99,12 +100,6 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   },
   "lint-staged": {
     "{src,test}/**/*.js": [
