@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.1 (Aug 25, 2021)
+
+- Escape inline code spans.
+
 ## 2.1.0 (Jan 1, 2021)
 
 - Support Vue 3.
