@@ -225,11 +225,19 @@ module.exports = function markdownToVueLoader(source, map) {
       $pre.wrap(options.preWrapper);
     }
 
+    // Escape fenced code blocks
     $pre.children('code').each((i, code) => {
       const $code = $(code);
 
       $code.text(markdown.utils.escapeHtml($code.text()));
     });
+  });
+
+  // Escape inline code spans
+  $(':not(pre) > code').each((i, code) => {
+    const $code = $(code);
+
+    $code.text(markdown.utils.escapeHtml($code.text()));
   });
 
   $('table').each((i, table) => {
