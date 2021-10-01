@@ -81,7 +81,7 @@
         </div>
       </div>
       <div class="container-fluid">
-        <h2 class="mb-4">
+        <h2 class="my-4">
           Examples
         </h2>
         <section class="row example">
