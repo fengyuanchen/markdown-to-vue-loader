@@ -1,4 +1,17 @@
-# [3.1.0](https://github.com/fengyuanchen/markdown-to-vue-loader/compare/v2.0.0...v3.1.0) (2021-01-01)
+## [3.1.1](https://github.com/fengyuanchen/markdown-to-vue-loader/compare/v3.1.0...v3.1.1) (2021-10-01)
+
+
+### Bug Fixes
+
+* escape inline code spans ([a03a544](https://github.com/fengyuanchen/markdown-to-vue-loader/commit/a03a544ca1ed4a1e7162d369d9ddfabfa9a72d94))
+
+
+
+# [3.1.0](https://github.com/fengyuanchen/markdown-to-vue-loader/compare/v3.0.0...v3.1.0) (2021-01-01)
+
+
+
+# [3.0.0](https://github.com/fengyuanchen/markdown-to-vue-loader/compare/v2.0.0...v3.0.0) (2020-10-31)
 
 
 ### Features
