@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/dist/plugin').default;
+const { VueLoaderPlugin } = require('vue-loader');
 const path = require('path');
 
 module.exports = (env = {}) => ({
@@ -55,6 +55,5 @@ module.exports = (env = {}) => ({
   devServer: {
     hot: true,
     open: true,
-    overlay: true,
   },
 });
