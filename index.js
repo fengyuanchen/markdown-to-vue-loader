@@ -249,7 +249,7 @@ module.exports = function markdownToVueLoader(source, map) {
     $body.append($style);
   });
 
-  $$('template').html(`<div class="${options.componentNamespace}-${normalizedResourceName}">${$('body').html()}</div>`);
+  $$('template').html(`<div><div class="${options.componentNamespace}-${normalizedResourceName}">${$('body').html()}</div></div>`);
 
   if (options.exportSource || components.length > 0) {
     $body.append(`<script>
