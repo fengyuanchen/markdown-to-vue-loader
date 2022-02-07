@@ -224,20 +224,6 @@ module.exports = function markdownToVueLoader(source, map) {
     if (options.preWrapper) {
       $pre.wrap(options.preWrapper);
     }
-
-    // Escape fenced code blocks
-    $pre.children('code').each((i, code) => {
-      const $code = $(code);
-
-      $code.text(markdown.utils.escapeHtml($code.text()));
-    });
-  });
-
-  // Escape inline code spans
-  $(':not(pre) > code').each((i, code) => {
-    const $code = $(code);
-
-    $code.text(markdown.utils.escapeHtml($code.text()));
   });
 
   $('table').each((i, table) => {
@@ -263,7 +249,7 @@ module.exports = function markdownToVueLoader(source, map) {
     $body.append($style);
   });
 
-  $$('template').append(`<div class="${options.componentNamespace}-${normalizedResourceName}">${$('body').html()}</div>`);
+  $$('template').html(`<div class="${options.componentNamespace}-${normalizedResourceName}">${$('body').html()}</div>`);
 
   if (options.exportSource || components.length > 0) {
     $body.append(`<script>
