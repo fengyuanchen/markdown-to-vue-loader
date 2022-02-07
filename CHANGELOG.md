@@ -1,3 +1,12 @@
+## [3.1.3](https://github.com/fengyuanchen/markdown-to-vue-loader/compare/v3.1.2...v3.1.3) (2022-02-07)
+
+
+### Bug Fixes
+
+* fix missing compnent wrapper element ([5df459d](https://github.com/fengyuanchen/markdown-to-vue-loader/commit/5df459d37dc71778484164fa1512e8fe06a58fd2))
+
+
+
 ## [3.1.2](https://github.com/fengyuanchen/markdown-to-vue-loader/compare/v3.1.1...v3.1.2) (2022-02-07)
 
 
