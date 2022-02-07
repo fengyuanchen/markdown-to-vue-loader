@@ -1,3 +1,7 @@
+## [3.1.2](https://github.com/fengyuanchen/markdown-to-vue-loader/compare/v3.1.1...v3.1.2) (2022-02-07)
+
+
+
 ## [3.1.1](https://github.com/fengyuanchen/markdown-to-vue-loader/compare/v3.1.0...v3.1.1) (2021-10-01)
 
 

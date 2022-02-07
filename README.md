@@ -1,6 +1,6 @@
 # markdown-to-vue-loader
 
-[![Coverage Status](https://img.shields.io/codecov/c/github/fengyuanchen/markdown-to-vue-loader.svg)](https://codecov.io/gh/fengyuanchen/markdown-to-vue-loader) [![Downloads](https://img.shields.io/npm/dm/markdown-to-vue-loader.svg)](https://www.npmjs.com/package/markdown-to-vue-loader) [![Version](https://img.shields.io/npm/v/markdown-to-vue-loader.svg)](https://www.npmjs.com/package/markdown-to-vue-loader) [![Dependencies](https://img.shields.io/david/fengyuanchen/markdown-to-vue-loader.svg)](https://www.npmjs.com/package/markdown-to-vue-loader)
+[![Coverage Status](https://img.shields.io/codecov/c/github/fengyuanchen/markdown-to-vue-loader.svg)](https://codecov.io/gh/fengyuanchen/markdown-to-vue-loader) [![Downloads](https://img.shields.io/npm/dm/markdown-to-vue-loader.svg)](https://www.npmjs.com/package/markdown-to-vue-loader) [![Version](https://img.shields.io/npm/v/markdown-to-vue-loader.svg)](https://www.npmjs.com/package/markdown-to-vue-loader)
 
 > Markdown to Vue component loader for [Webpack](https://webpack.js.org/).
 
@@ -10,13 +10,13 @@
 ## Features
 
 - Supports Vue 2 and Vue 3.
-- Supports to load a markdown file as a Vue component.
-- Supports to load code blocks (Vue and HTML by default) as Vue components.
+- Supports loading a markdown file as a Vue component.
+- Supports loading code blocks (Vue and HTML by default) as Vue components.
 - Supports 10 [options](#options).
 
 ## Getting started
 
-### Install
+### Installation
 
 ```shell
 npm install markdown-to-vue-loader vue-loader webpack --save-dev
