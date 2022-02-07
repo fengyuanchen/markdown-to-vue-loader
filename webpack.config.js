@@ -1,8 +1,10 @@
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
+const VueLoaderPlugin = require('vue-loader/dist/plugin').default;
 const path = require('path');
 
 module.exports = (env = {}) => ({
+  mode: env.production ? 'production' : 'development',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './docs'),
@@ -46,10 +48,14 @@ module.exports = (env = {}) => ({
     },
   },
   plugins: [
-    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       filename: env.production ? '../docs/index.html' : 'index.html',
       template: './src/index.html',
+    }),
+    new VueLoaderPlugin(),
+    new webpack.DefinePlugin({
+      __VUE_OPTIONS_API__: true,
+      __VUE_PROD_DEVTOOLS__: false,
     }),
   ],
   devServer: {

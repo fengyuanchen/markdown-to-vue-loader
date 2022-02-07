@@ -1,0 +1,4 @@
+*.local*
+.nyc_output
+docs
+node_modules
