@@ -45,6 +45,28 @@ module: {
 }
 ```
 
+### Usage Vue CLI
+
+Within your vue.config.js configuration file, you'll need to add the **markdown-to-vue-loader** to the chainWebpack, like so:
+
+```js
+chainWebpack: (config) => {
+  config.module
+      .rule('markdown')
+          .test(/\.md$/)
+          .use('vue-loader')
+              .loader('vue-loader')
+              .end()
+          .use('markdown-to-vue-loader')
+              .loader('markdown-to-vue-loader')
+              .options({
+                  ...
+              })
+              .end()
+  },
+```
+
+
 ## Options
 
 ### cheerioLoadOptions
