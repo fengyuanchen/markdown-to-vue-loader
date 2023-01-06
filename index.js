@@ -132,9 +132,7 @@ module.exports = function markdownToVueLoader(source, map) {
             component = $$('script').html() || 'export default {};';
             scoped = $style.attr('scoped');
             style = $style.html();
-            $$('template').each((i, element) => {
-              template += $(element).html();
-            });
+            template += $$('template').html();
             break;
           }
 
