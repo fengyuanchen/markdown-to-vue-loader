@@ -1,3 +1,12 @@
+## [3.1.4](https://github.com/fengyuanchen/markdown-to-vue-loader/compare/v3.1.3...v3.1.4) (2023-01-07)
+
+
+### Bug Fixes
+
+* compile root templates only ([e5ac671](https://github.com/fengyuanchen/markdown-to-vue-loader/commit/e5ac67137b8ee9b1c823b0d1e641df4a9cb04dbe)), closes [#11](https://github.com/fengyuanchen/markdown-to-vue-loader/issues/11)
+
+
+
 ## [3.1.3](https://github.com/fengyuanchen/markdown-to-vue-loader/compare/v3.1.2...v3.1.3) (2022-02-07)
 
 
