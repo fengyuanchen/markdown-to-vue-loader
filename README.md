@@ -24,48 +24,53 @@ npm install markdown-to-vue-loader vue-loader webpack --save-dev
 
 ### Usage
 
-Within your webpack configuration object, you'll need to add the **markdown-to-vue-loader** to the list of modules, like so:
+Within your `webpack.config.js` configuration object, you'll need to add the **markdown-to-vue-loader** to the list of modules, like so:
 
 ```js
-module: {
-  rules: [
-    {
-      test: /\.md$/,
-      use: [
-        'vue-loader',
-        {
-          loader: 'markdown-to-vue-loader',
-          options: {
-            // ...
+// webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.md$/,
+        use: [
+          'vue-loader',
+          {
+            loader: 'markdown-to-vue-loader',
+            options: {
+              // ...
+            },
           },
-        },
-      ],
-    },
-  ],
-}
+        ],
+      },
+    ],
+  },
+};
 ```
 
-### Usage Vue CLI
+### Usage for Vue CLI
 
-Within your vue.config.js configuration file, you'll need to add the **markdown-to-vue-loader** to the chainWebpack, like so:
+Within your `vue.config.js` configuration file, you'll need to add the **markdown-to-vue-loader** to the `chainWebpack`, like so:
 
 ```js
-chainWebpack: (config) => {
-  config.module
+// vue.config.js
+module.exports = {
+  chainWebpack: (config) => {
+    config.module
       .rule('markdown')
-          .test(/\.md$/)
-          .use('vue-loader')
-              .loader('vue-loader')
-              .end()
-          .use('markdown-to-vue-loader')
-              .loader('markdown-to-vue-loader')
-              .options({
-                  ...
-              })
-              .end()
+        .test(/\.md$/)
+        .use('vue-loader')
+          .loader('vue-loader')
+          .end()
+        .use('markdown-to-vue-loader')
+          .loader('markdown-to-vue-loader')
+          .options({
+            // ...
+          })
+          .end();
   },
+};
 ```
-
 
 ## Options
 
