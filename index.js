@@ -127,12 +127,16 @@ module.exports = function markdownToVueLoader(source, map) {
         switch (language) {
           case 'vue': {
             const $$ = cheerio.load($code.text(), cheerioLoadOptions);
+            const $body = $$('body');
             const $style = $$('style');
 
             component = $$('script').html() || 'export default {};';
             scoped = $style.attr('scoped');
             style = $style.html();
-            $$('template').each((i, element) => {
+
+            // Move <template> from <head> to <body>
+            $body.append($$('head > template'));
+            $body.children('template').each((i, element) => {
               template += $(element).html();
             });
             break;
@@ -151,8 +155,8 @@ module.exports = function markdownToVueLoader(source, map) {
             $style.remove();
 
             // Move <template> from <head> to <body>
-            $body.append($$('head template'));
-            $body.find('template').each((i, element) => {
+            $body.append($$('head > template'));
+            $body.children('template').each((i, element) => {
               const $element = $(element);
 
               $element.replaceWith($element.html());
@@ -241,15 +245,15 @@ module.exports = function markdownToVueLoader(source, map) {
   const $$ = cheerio.load('<template></template>');
   const $body = $$('body');
 
-  $body.append($$('head template'));
-
   $('style').each((index, style) => {
     const $style = $(style);
 
     $body.append($style);
   });
 
-  $$('template').html(`<div><div class="${options.componentNamespace}-${normalizedResourceName}">${$('body').html()}</div></div>`);
+  // Move <template> from <head> to <body>
+  $body.append($$('head > template'));
+  $body.children('template').html(`<div><div class="${options.componentNamespace}-${normalizedResourceName}">${$('body').html()}</div></div>`);
 
   if (options.exportSource || components.length > 0) {
     $body.append(`<script>
