@@ -31,7 +31,7 @@ const defaultOptions = {
 const REGEXP_COMMENT_OPTIONS = /^(?:no-)?vue-component$/;
 const REGEXP_HYPHENS_END = /-*$/;
 const REGEXP_HYPHENS_START = /^-*/;
-const REGEXP_LANGUAGE_PREFIXES = /lang(uage)?-/;
+const REGEXP_LANGUAGE_CLASS = /\blang(?:uage)?-(\w+)\b/;
 const REGEXP_MODULE_EXPORTS = /(?:export\s+default|(?:module\.)?exports\s*=)/g;
 const REGEXP_MODULE_IMPORTS = /(?:import)(?:\s+((?:[\s\S](?!import))+?)\s+(?:from))?\s+["']([^"']+)["']/g;
 const REGEXP_NOT_WORDS = /\W/g;
@@ -112,7 +112,7 @@ module.exports = function markdownToVueLoader(source, map) {
     if (commentOption !== 'no-vue-component') {
       $pre.children('code').each((idx, code) => {
         const $code = $(code);
-        const language = $code.attr('class').replace(REGEXP_LANGUAGE_PREFIXES, '');
+        const [, language] = ($code.attr('class') || '').match(REGEXP_LANGUAGE_CLASS) || [];
 
         if (options.languages.indexOf(language) === -1 && commentOption !== 'vue-component') {
           return;
