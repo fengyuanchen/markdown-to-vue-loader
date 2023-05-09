@@ -45,6 +45,15 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    alias: {
+      // Vue 2
+      // vue$: 'vue/dist/vue.esm.js',
+
+      // Vue 3
+      vue$: 'vue/dist/vue.esm-bundler',
+    },
+  },
 };
 ```
 
