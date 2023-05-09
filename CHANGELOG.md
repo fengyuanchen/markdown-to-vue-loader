@@ -1,3 +1,12 @@
+## [3.1.5](https://github.com/fengyuanchen/markdown-to-vue-loader/compare/v3.1.4...v3.1.5) (2023-05-09)
+
+
+### Bug Fixes
+
+* fix code language detection in some edge case ([8bd37cf](https://github.com/fengyuanchen/markdown-to-vue-loader/commit/8bd37cfb04e84515032c2ca45ed1b2f4f059c298))
+
+
+
 ## [3.1.4](https://github.com/fengyuanchen/markdown-to-vue-loader/compare/v3.1.3...v3.1.4) (2023-01-07)
 
 
